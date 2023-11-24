@@ -75,9 +75,13 @@
   }
   .post-body{
     margin-left: 10px;
+    margin-bottom:0px;
+    height: auto;
+    padding: none;
   }
   .footer-post-username{
     font-weight: 500;
+    margin-top: -1px;
   }
   .preview-comments{
     display: flex;
@@ -86,11 +90,13 @@
 
   }
   .comment{
-    margin-left: 10px;
+    margin-top: -10px;
   }
   
   .comment-btn{
     margin-top:5px;
+    font-weight: 500;
+    color: rgb(87, 83, 83);
   }
 
   .comment-btn:hover{

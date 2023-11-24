@@ -259,7 +259,7 @@ function Feed() {
                 <p className='footer-post-username'>{comment.userName}</p>
                 <p className='comment'>{comment.comment}</p>
               </div>))}
-              <div className='comment-btn' onClick={() => getComments(post.postId)}>View all comments</div>
+              <div className='comment-btn' onClick={() => getComments(post.postId)}>View all comments...</div>
             </div>
           );
         })}

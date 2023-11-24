@@ -1,0 +1,98 @@
+/* Add these styles to your existing CSS file or create a new one */
+
+.posts-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+  }
+  
+  .post-card {
+    
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: auto !important;
+    border: 1px solid #ccc;
+    margin: 5px;
+    padding: 10px; /* Adjust padding as needed */
+    box-sizing: border-box;
+    border-radius: 15px;
+  }
+  .post-card > .footer-btn {
+    width: 101%;
+    padding-top: 5px;
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid #ccc;
+    
+  }
+  
+  .post-card > .footer-btn > button {
+    border:none;
+    background-color: white;
+    margin: 2px;
+  }
+  
+  .post-card > .footer-btn > button:hover {
+    cursor: pointer;
+  }
+  .posts-container >.feed-label{
+    
+    font-size: larger;
+    margin-left: -270px; 
+    margin-bottom: -20px;
+  }
+  #post-img{
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  span{
+    margin-top: 0;
+  }
+  #proPic{
+    width: 25px;
+    height: 25px;
+  }
+  .post-username{
+    /* position: absolute; */
+    margin-top: -48px;
+    margin-left: 30px;
+    font-size: large;
+    font-weight: 500;
+   
+  }
+  
+  .post-header{
+    border-bottom: 1px solid #ccc;
+  }
+  .footer{
+    display: flex;
+    flex-direction: row !important;
+  }
+  .post-body{
+    margin-left: 10px;
+  }
+  .footer-post-username{
+    font-weight: 500;
+  }
+  .preview-comments{
+    display: flex;
+    margin-bottom:-20px;
+    flex-direction: column;
+
+  }
+  .comment{
+    margin-left: 10px;
+  }
+  
+  .comment-btn{
+    margin-top:5px;
+  }
+
+  .comment-btn:hover{
+    cursor: pointer;
+  }

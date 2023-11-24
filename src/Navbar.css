@@ -1,0 +1,41 @@
+/* Inside your Navbar.css file */
+.Navbar {
+    display: flex;
+    height: 50px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    position: sticky;
+    margin-bottom: 20px;
+    z-index: 100;
+    top: 0;
+    align-items: center;
+    justify-content: space-between; /* To push the Hello, User! to the right */
+  }
+  
+  .menu-icon {
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+  .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+  
+  /* Styles for the mobile menu (initially hidden) */
+  .menu-icon.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+  
+  .menu-icon.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .menu-icon.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+  

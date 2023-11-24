@@ -72,21 +72,25 @@
   .footer{
     display: flex;
     flex-direction: row !important;
-  }
-  .post-body{
-    margin-left: 10px;
-    margin-bottom:0px;
     height: auto;
-    padding: none;
+    margin-top: -10px;
+  }
+  .post-caption{
+    margin-left: 8px;
+    margin-top: auto;
+
+    /* height: auto; */
+    /* padding: none; */
   }
   .footer-post-username{
     font-weight: 500;
-    margin-top: -1px;
+    /* margin-top: -1px; */
   }
   .preview-comments{
     display: flex;
-    margin-bottom:-20px;
+    /* margin-bottom:-20px; */
     flex-direction: column;
+    margin-top: -20px;
 
   }
   .comment{

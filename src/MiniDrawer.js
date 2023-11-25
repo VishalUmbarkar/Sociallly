@@ -6,11 +6,14 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+import './Drawer.css';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
 export default function MiniDrawer() {
   const icons = ['/home.png', '/explore.png', '/avatar.png', '/create.png']; // Add more icons as needed
+  const URLs = ['http://localhost:3000/feed','http://localhost:3000/explore','http://localhost:3000/profile','http://localhost:3000/create'];
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -36,7 +39,8 @@ export default function MiniDrawer() {
           {['Home', 'Explore', 'Profile', 'Create'].map((text, index) => (
             <ListItem key={text} disablePadding style={{ margin: '20px' }}>
               {index < icons.length && <img src={icons[index]} alt={`${text} icon`} style={{ marginRight: '10px' }} />}
-              <ListItemButton >
+              
+              <ListItemButton  component={Link} to ={URLs[index]} >
                 <ListItemText primary={text} />
               </ListItemButton>
             </ListItem>

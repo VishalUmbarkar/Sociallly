@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import './Feed.css';
+import Comment from './Comment';
 
 function Feed() {
   const [posts, setPosts] = useState([]);
@@ -157,6 +158,9 @@ function Feed() {
                   <p>{post.userName}</p>
                 </div>
                 <p className="post-caption">{post.captions}</p>
+              </div>
+              <div>
+                <Comment />
               </div>
 
               {comments[post.postId] && comments[post.postId].map((comment) => (

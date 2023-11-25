@@ -1,0 +1,14 @@
+/* ExploreContainer.css */
+
+.explore-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Set height to 100% of the viewport height */
+    width: 1450px; /* Set width to 100% of the viewport width */
+    margin: 50px;
+    overflow: hidden;
+  }
+  
+  /* Add any additional styles as needed */
+  

@@ -8,7 +8,10 @@ const LoginComponent = () => {
     <div className='login-container'>
       
       <div className='post-card-login'>
-          <h2>Socially</h2>
+          {/* <h2>Socially</h2> */}
+          <div className='feed-label-login'>
+          <img src='/new logo.png' alt='feed' style={{height:"50px"}}></img>
+        </div>
         <div className='login-textbox'>
         
           <input type="text" id='text-username' placeholder='Username' />

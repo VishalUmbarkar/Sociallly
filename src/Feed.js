@@ -4,11 +4,6 @@ import React, { useState, useEffect } from 'react';
 import './Feed.css';
 
 function Feed() {
-  const [userId, setUserId] = useState(null);
-  const handleLogin = (newUserId) => {
-    setUserId(newUserId);
-  };
-
   const [posts, setPosts] = useState([]);
   const [likedPosts, setLikedPosts] = useState([]);
   const [comments, setComments] = useState({});
@@ -93,12 +88,13 @@ function Feed() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ "userId" : posts[index].userId,
-      "userName" : posts[index].userName,
+       body: JSON.stringify({ //"userId" : posts[index].userId,
+      //"userName" : posts[index].userName,
       "noOfComments": posts[index].noOfComments,
       "likes": incrementedLikes,
-      "captions": posts[index].captions,
-      "image" : posts[index].image }),
+      //"captions": posts[index].captions,
+      //"image" : posts[index].image
+ }),
     })
       .then((response) => response.json())
       .then((updatedPost) => {
@@ -117,7 +113,7 @@ function Feed() {
     <div>
       <div className="posts-container">
         <div className='feed-label'>
-          <h2>Feed</h2>
+          <img src='/feed logo.png' alt='feed' style={{height:"23px"}}></img>
         </div>
         {posts.map((post, index) => {
           const isLiked = likedPosts[index];
@@ -144,13 +140,13 @@ function Feed() {
                   )}
                 </button>
                 <div className='footer-likes'>
-                  <span>{post.likes}</span>
+                  <span style={{fontSize:"15px"}}>{post.likes}</span>
                 </div>
                 <button>
                   <img src='/comment.png' alt='comment-btn'></img>
                 </button>
                 <div className='footer-likes'>
-                  <span>{post.noOfComments}</span>
+                  <span style={{fontSize:"15px"}}>{post.noOfComments}</span>
                 </div>
                 <button>
                   <img src='/share.png' alt='share-btn'></img>
@@ -168,6 +164,7 @@ function Feed() {
               <div className='preview-comments' key={comment.id}>
                 <p className='footer-post-username'>{comment.userName}</p>
                 <p className='comment'>{comment.comment}</p>
+                
               </div>))}
               <div className='comment-btn' onClick={() => getComments(post.postId)}>View all {post.noOfComments} comments...</div>
             </div>

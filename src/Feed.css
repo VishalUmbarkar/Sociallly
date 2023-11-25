@@ -39,11 +39,16 @@
     cursor: pointer;
   }
   .posts-container >.feed-label{
-    
-    font-size: larger;
-    margin-left: -270px; 
-    margin-bottom: -20px;
+    height:"20px";
+    margin-top: 50px; 
+    margin-left: -270px;
   }
+
+  .posts-container >.feed-label>.img{
+    height:"40px";
+     
+  }
+
   #post-img{
     width: 100%;
     height: auto;

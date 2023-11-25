@@ -1,106 +1,9 @@
-// import React, { useState, useEffect } from 'react';
-// import './Feed.css';
 
-// function Feed() {
-//     const [userId, setUserId] = useState(null);
-//   const handleLogin = (newUserId) => {
-//     setUserId(newUserId);
-//   };
-
-//   const [posts, setPosts] = useState([]);
-//   const [likedPosts, setLikedPosts] = useState([]);
-
-//   useEffect(() => {
-//     fetch('http://localhost:8080/feed')
-//       .then((response) => response.json())
-//       .then((data) => {
-//         console.log(data);
-//         setPosts(data);
-//         // Initialize likedPosts state with an array for each post
-//         setLikedPosts(Array(data.length).fill(false));
-//       })
-//       .catch((err) => {
-//         console.log(err.message);
-//       });
-//   }, []);
-
-//   const handleLikeClick = (index) => {
-//     // Create a copy of likedPosts
-//     const newLikedPosts = [...likedPosts];
-//     // Toggle the like state for the specific post
-//     newLikedPosts[index] = !newLikedPosts[index];
-//     // Update the likedPosts state
-//     setLikedPosts(newLikedPosts);
-//   };
-//   return (
-//     <div>
-//         <div className="posts-container">
-//         <div className='feed-label'>
-//           <h2>Feed</h2>
-//         </div>
-//         {posts.map((post, index) => {
-//           const isLiked = likedPosts[index];
-
-//           return (
-//             <div className="post-card" key={post.id}>
-//               <div className='post-header'>
-//                 <div className='profilePicture'>
-//                   <img src='/profilePicture.png' id='proPic' alt='profile pic'></img>
-//                 </div>
-//                 <div className='post-username'>
-//                   <p>{post.userName}</p>
-//                 </div>
-//               </div>
-//               <div className="post-title">
-//                 <img src={post.image} id='post-img' alt='image'></img>
-//               </div>
-//               <div className='footer-btn'>
-//                 <button onClick={() => handleLikeClick(index)}>
-//                   {isLiked ? (
-//                     <img src='/liked.png' alt='liked-btn'></img>
-
-//                   ) : (
-//                     <img src='/like.png' alt='like-btn'></img>
-//                   )}
-//                 </button>
-//                 <div className='footer-likes'>
-//                   <span>{post.likes}</span>
-//                 </div>
-//                 <button>
-//                   <img src='/comment.png' alt='comment-btn'></img>
-//                 </button>
-//                 <div className='footer-likes'>
-//                   <span>{post.noOfComments}</span>
-//                 </div>
-//                 <button>
-//                   <img src='/share.png' alt='share-btn'></img>
-//                 </button>
-//               </div>
-//               <div className='footer'>
-//                 <div className='footer-post-username'>
-//                   <p>{post.userName}</p>
-//                 </div>
-//                 <p className="post-body">{post.captions}</p>
-//               </div>
-//             </div>
-//           );
-//         })}
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default Feed
 
 import React, { useState, useEffect } from 'react';
 import './Feed.css';
 
 function Feed() {
-  const [userId, setUserId] = useState(null);
-  const handleLogin = (newUserId) => {
-    setUserId(newUserId);
-  };
-
   const [posts, setPosts] = useState([]);
   const [likedPosts, setLikedPosts] = useState([]);
   const [comments, setComments] = useState({});
@@ -120,6 +23,7 @@ function Feed() {
   }, []);
 
   const getComments = (postId)=>{
+  
     fetch(`http://localhost:8080/feed/${postId}/comments`)
   .then((response) => response.json())
   .then((data) => {
@@ -133,7 +37,8 @@ function Feed() {
     console.log(err.message);
   });
   return comments;
-  }
+}
+
   
 
   
@@ -183,12 +88,13 @@ function Feed() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ "userId" : posts[index].userId,
-      "userName" : posts[index].userName,
+       body: JSON.stringify({ //"userId" : posts[index].userId,
+      //"userName" : posts[index].userName,
       "noOfComments": posts[index].noOfComments,
       "likes": incrementedLikes,
-      "captions": posts[index].captions,
-      "image" : posts[index].image }),
+      //"captions": posts[index].captions,
+      //"image" : posts[index].image
+ }),
     })
       .then((response) => response.json())
       .then((updatedPost) => {
@@ -207,7 +113,7 @@ function Feed() {
     <div>
       <div className="posts-container">
         <div className='feed-label'>
-          <h2>Feed</h2>
+          <img src='/feed logo.png' alt='feed' style={{height:"23px"}}></img>
         </div>
         {posts.map((post, index) => {
           const isLiked = likedPosts[index];
@@ -222,7 +128,7 @@ function Feed() {
                   <p>{post.userName}</p>
                 </div>
               </div>
-              <div className="post-title">
+              <div className="post-image">
                 <img src={post.image} id='post-img' alt='image'></img>
               </div>
               <div className='footer-btn'>
@@ -234,13 +140,13 @@ function Feed() {
                   )}
                 </button>
                 <div className='footer-likes'>
-                  <span>{post.likes}</span>
+                  <span style={{fontSize:"15px"}}>{post.likes}</span>
                 </div>
                 <button>
                   <img src='/comment.png' alt='comment-btn'></img>
                 </button>
                 <div className='footer-likes'>
-                  <span>{post.noOfComments}</span>
+                  <span style={{fontSize:"15px"}}>{post.noOfComments}</span>
                 </div>
                 <button>
                   <img src='/share.png' alt='share-btn'></img>
@@ -250,7 +156,7 @@ function Feed() {
                 <div className='footer-post-username'>
                   <p>{post.userName}</p>
                 </div>
-                <p className="post-body">{post.captions}</p>
+                <p className="post-caption">{post.captions}</p>
               </div>
 
               {comments[post.postId] && comments[post.postId].map((comment) => (
@@ -258,8 +164,9 @@ function Feed() {
               <div className='preview-comments' key={comment.id}>
                 <p className='footer-post-username'>{comment.userName}</p>
                 <p className='comment'>{comment.comment}</p>
+                
               </div>))}
-              <div className='comment-btn' onClick={() => getComments(post.postId)}>View all comments</div>
+              <div className='comment-btn' onClick={() => getComments(post.postId)}>View all {post.noOfComments} comments...</div>
             </div>
           );
         })}

@@ -9,6 +9,10 @@
     margin: 50px;
     overflow: hidden;
   }
+
+  .imagelist::-webkit-scrollbar { 
+    display: none !important; /* Safari and Chrome */
+}
   
   /* Add any additional styles as needed */
   

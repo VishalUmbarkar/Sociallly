@@ -1,0 +1,11 @@
+#btn-signup {
+    height: 30px;
+    border-radius: 3px;
+    border-color: white;
+    border: none;
+    background-color: rgb(45, 44, 44);
+    color: white;
+    width: 86%;
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }

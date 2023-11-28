@@ -9,7 +9,7 @@ import ListItemText from '@mui/material/ListItemText';
 import './Drawer.css';
 import { Link } from 'react-router-dom';
 
-const drawerWidth = 240;
+const drawerWidth = 220;
 
 export default function MiniDrawer() {
   const icons = ['/home.png', '/explore.png', '/avatar.png', '/create.png']; // Add more icons as needed
@@ -17,7 +17,8 @@ export default function MiniDrawer() {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <Drawer
+      
+      <Drawer 
         sx={{
           width: drawerWidth,
           flexShrink: 0,
@@ -47,9 +48,11 @@ export default function MiniDrawer() {
           ))}
         </List>
       </Drawer>
+      
       <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}>
         {/* Your main content goes here */}
       </Box>
     </Box>
+    
   );
 }

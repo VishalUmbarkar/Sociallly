@@ -79,6 +79,7 @@
     flex-direction: row !important;
     height: auto;
     margin-top: -10px;
+    margin-bottom: -5px;
   }
   .post-caption{
     margin-left: 8px;
@@ -90,24 +91,37 @@
   .footer-post-username{
     font-weight: 500;
     /* margin-top: -1px; */
+    height: auto;
+    padding: 0;
   }
-  .preview-comments{
+  .post-preview-comments{
     display: flex;
-    /* margin-bottom:-20px; */
-    flex-direction: column;
-    margin-top: -20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 40px;
+    margin-top:auto;
 
   }
+
   .comment{
-    margin-top: -10px;
+    /* margin-top: -10px; */
+    margin-left: 8px;
+    margin-bottom: -10px;
+    
   }
   
   .comment-btn{
     margin-top:5px;
     font-weight: 500;
     color: rgb(87, 83, 83);
+    margin-bottom:10px;
   }
 
   .comment-btn:hover{
     cursor: pointer;
   }
+  .comment-box{
+    height:30px;
+    margin-left: -8px;
+  }
+  

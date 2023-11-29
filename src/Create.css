@@ -1,15 +1,19 @@
 .main-container{
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    /* background-color: #fff; */
     color: black;
     border-radius: 8px;
+    background-color: rgba(231, 229, 234, 0.5);
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+   /* Adjust the blur value as needed */
+   backdrop-filter: blur(20px);
 }
 .header-container{
     border-radius: 5px;
     display: flex;
     flex-direction: row;
-    background-color: #fff;
+    /* background-color: #fff; */
     color: black;
     align-items: center;
     border-bottom: 1px solid #ccc;
@@ -19,7 +23,7 @@
 
 
 .post-create-inner-container-backdrop {
-    background-color: #fff; /* White background color for the post container */
+    /* background-color: #fff; White background color for the post container */
     display: flex;
     height: 450px;
     width: 800px;
@@ -49,6 +53,7 @@
     height: 150px;
     border: none;
     resize: none;
+    background:none;
 }
 
 textarea:focus{
@@ -61,7 +66,8 @@ textarea:focus{
     top: 0;
     right:0;
     border:none;
-    background-color: white;
+    /* background-color: white; */
+    background: transparent;
     color: #0396f6;
     padding-right: 50px;
 }

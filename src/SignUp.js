@@ -62,7 +62,7 @@ function SignUp() {
       <div className="post-card-login">
         {/* <h2>Socially</h2> */}
         <div className="feed-label-login">
-          <img src="/new logo.png" alt="feed" style={{ height: "50px" }}></img>
+          <img src="/new_logo.png" alt="feed" style={{ height: "50px" }}></img>
         </div>
         <div className="login-textbox">
           <input type="text" id="text-username" placeholder="First Name" value={FirstName} onChange={(event)=>setFirstName(event.target.value)}/>

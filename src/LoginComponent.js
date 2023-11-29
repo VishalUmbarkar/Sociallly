@@ -76,7 +76,7 @@ const LoginComponent = () => {
           />
 
           <button id="btn-login" onClick={handleSubmit}>
-            Login
+            Log In
           </button>
         </div>
       </div>
@@ -85,7 +85,7 @@ const LoginComponent = () => {
         <p>
           Don't have an account?{" "}
           <a href="http://localhost:3000/signUp">
-            <span id="signup-btn" style={{color:"black"}} >Sign Up</span>
+            <span id="signup-btn"  >Sign Up</span>
           </a>
         </p>
       </div>

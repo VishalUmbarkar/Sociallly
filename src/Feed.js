@@ -154,10 +154,10 @@ function Feed() {
 
   return (
     <div>
-      <div className="posts-container">
-        <div className="feed-label">
+      <div className="posts-container" style={{marginTop:"70px"}}>
+        {/* <div className="feed-label">
           <img src="/feed_logo.png" alt="feed" style={{ height: "23px" }}></img>
-        </div>
+        </div> */}
         {posts.map((post, index) => {
           const isLiked = likedPosts[index];
 
@@ -187,18 +187,25 @@ function Feed() {
                   )}
                 </button>
                 <div className="footer-likes">
-                  <span style={{ fontSize: "15px" }}>{post.likes}</span>
+                  {/* <span style={{ fontSize: "15px" }}>{post.likes}</span> */}
                 </div>
                 <button onClick={() => handleCommentClick(post.postId)}>
                   <img src="/comment.png" alt="comment-btn"></img>
                 </button>
                 <div className="footer-likes">
-                  <span style={{ fontSize: "15px" }}>{post.noOfComments}</span>
+                  {/* <span style={{ fontSize: "15px" }}>{post.noOfComments}</span> */}
                 </div>
                 <button>
                   <img src="/share.png" alt="share-btn" style={{background: "transparent" }}></img>
                 </button>
               </div>
+              {post.likes !== null && (
+  <span style={{ fontSize: "15px", fontWeight: "500", marginLeft: "1px" }}>
+    {post.likes} <span>{post.likes > 1 ? 'likes' : 'like'}</span>
+  </span>
+)}
+
+
               <div className="footer">
                 <div className="footer-post-username">
                   <p>{post.userName}</p>

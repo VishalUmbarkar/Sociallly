@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Backdrop } from '@mui/material';
 import './Create.css'
 
-const Create = () => {
-  const [open, setOpen] = React.useState(true);
+const Create = ({open , onClose}) => {
+  const [openCreate, setOpenCreate] = React.useState(true);
   const handleClose = () => {
-    setOpen(false);
+    setOpenCreate(false);
   };
   const [caption, setCaption] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
@@ -53,7 +53,7 @@ const blob = new Blob([json], {
       <Backdrop 
       sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
       open={open}
-      onClick={handleClose}
+      onClick={onClose}
       >
 
       <div className='main-container'>

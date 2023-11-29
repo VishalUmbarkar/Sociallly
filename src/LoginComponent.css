@@ -1,7 +1,7 @@
 body{
   background:
-    url(https://source.unsplash.com/E8Ufcyxz514/2400x1823) no-repeat  fixed ;
-    /* url('C://Workspace/projects/api-practice/public/background.png'); */
+    /* url(https://source.unsplash.com/E8Ufcyxz514/2400x1823) no-repeat  fixed ; */
+    url('C://Workspace/projects/api-practice/public/background_image.jpg') no-repeat  fixed ;
     /* background-color: #8EC5FC;
     background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 45%, #ffffff 99%) ; */
     /* background-color: #A9C9FF; */
@@ -112,6 +112,6 @@ a:visited{
 }
 
 #signup-btn{
-  color: rgb(62, 60 , 60);
+  color: #006fb8;
 }
 

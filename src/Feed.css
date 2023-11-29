@@ -5,7 +5,7 @@
     flex-direction: column;
     justify-content: left;
     align-items: center;
-    
+    height: fit-content;
   }
   
   .post-card {
@@ -86,7 +86,7 @@
     flex-direction: row !important;
     height: auto;
     margin-top: -10px;
-    margin-bottom: -5px;
+    margin-bottom: 5px;
   }
   .post-caption{
     margin-left: 8px;
@@ -106,7 +106,8 @@
     flex-direction: row;
     flex-wrap: wrap;
     height: 40px;
-    margin-top:auto;
+    margin-top: -18px;
+    margin-bottom: 8px;
 
   }
 

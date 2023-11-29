@@ -1,46 +1,64 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import './Drawer.css';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
+import Toolbar from "@mui/material/Toolbar";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import "./Drawer.css";
+import { Link } from "react-router-dom";
+import Create from "./Create";
+import { Typography } from "@mui/material";
 
 const drawerWidth = 220;
 
 export default function MiniDrawer() {
-  const icons = ['/home.png', '/explore.png', '/avatar.png', '/create.png']; // Add more icons as needed
-  const URLs = ['http://localhost:3000/feed','http://localhost:3000/explore','http://localhost:3000/profile','http://localhost:3000/create'];
-  
-  const isSmallScreen = useMediaQuery('(max-width:600px)');
+  const isSmallScreen = useMediaQuery("(max-width:600px)");
+  const [showCreate, setShowCreate] = useState(false);
+  const [clickedHome, setClickedHome] = useState(true);
+  const [clickedExplore, setClickedExplore] = useState(false);
 
+  const handleHomeClick = () => {
+    setClickedExplore(false);
+    setClickedHome(true);
+  };
 
+  const handleEploreClick = () => {
+    setClickedHome(false);
+    setClickedExplore(true);
+  };
+
+  const handleCreateClick = () => {
+    setShowCreate(true);
+  };
+
+  const handleClose = () => {
+    setShowCreate(false);
+  };
 
   return (
-    <Box sx={{ display: 'flex' }}>
-      
-      <Drawer className='drawer'
+    <Box sx={{ display: "flex" }}>
+      <Drawer
+        className="drawer"
         sx={{
           width: drawerWidth,
           flexShrink: 0,
-          '& .MuiDrawer-paper': {
+          "& .MuiDrawer-paper": {
             width: drawerWidth,
-            boxSizing: 'border-box',
-            background:'transparent',
-            overflow:'clip',
-            borderRight:'1px solid #ccc',
-            backgroundColor: 'rgba(231, 229, 234, 0.3)',
-            boxShadow: '0 1px 12px rgba(0, 0, 0, 0.25)',
+            boxSizing: "border-box",
+            background: "transparent",
+            overflow: "clip",
+            borderRight: "1px solid #ccc",
+            backgroundColor: "rgba(231, 229, 234, 0.3)",
+            boxShadow: "0 1px 12px rgba(0, 0, 0, 0.25)",
             /* Adjust the blur value as needed */
-            backdropFilter: 'blur(5px)',
-            '@media (max-width: 600px)': {
-              width: '63px', // Adjust the width for smaller screens
-              marginLeft:'none',
-              flex:'1'
+            backdropFilter: "blur(5px)",
+            "@media (max-width: 600px)": {
+              width: "63px", // Adjust the width for smaller screens
+              marginLeft: "none",
+              flex: "1",
             },
           },
         }}
@@ -48,28 +66,182 @@ export default function MiniDrawer() {
         anchor="left"
       >
         <Toolbar />
-        {/* <h1 style={{ margin: '20px' }}>Socially</h1> */}
         <div style={{ width: isSmallScreen ? "40px" : "100%" }}>
-        <img src={isSmallScreen ? '/logo.png' : '/new_logo.png'} style={{width:"80%", margin:"20px", objectFit:"contain"}}></img>
+          <img
+            src={isSmallScreen ? "/black_logo.png" : "/new_logo.png"}
+            style={{ width: "80%", margin: "20px", objectFit: "contain" }}
+            alt="logo"
+          />
         </div>
 
         <List>
-          {['Home', 'Explore', 'Profile', 'Create'].map((text, index) => (
-            <ListItem key={text} disablePadding style={{ margin: '20px' }}>
-              {index < icons.length && <img src={icons[index]} alt={`${text} icon`} style={{ marginRight: '10px' }} />}
-              
-              <ListItemButton  component={Link} to ={URLs[index]} >
-                <ListItemText primary={text} style={{color:"black", fontWeight:"100"}} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          <ListItem
+            disablePadding
+            style={{ margin: "10px", width: "180px" }}
+            className="list-item"
+          >
+            <ListItemButton
+              component={Link}
+              to="http://localhost:3000/feed"
+              onClick={handleHomeClick}
+            >
+              <img
+                src={clickedHome ? "/home_clicked.png" : "/home.png"}
+                alt="Home icon"
+                style={
+                  clickedHome
+                    ? { width: "29px", height: "29px", marginRight: "10px" }
+                    : { marginRight: "10px" }
+                }
+                className="icon-img"
+              />
+
+              <ListItemText
+                primary={
+                  <Typography
+                    variant="body1"
+                    style={
+                      clickedHome
+                        ? {
+                            color: "black",
+                            fontWeight: "600",
+                            fontSize: "large",
+                            marginLeft:"5px"
+                          }
+                        : {
+                            color: "black",
+                            fontWeight: "400",
+                            fontSize: "large",
+                            marginLeft:"5px"
+                          }
+                    }
+                  >
+                    Home
+                  </Typography>
+                }
+              />
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem
+            disablePadding
+            style={{ margin: "10px", width: "180px" }}
+            className="list-item"
+          >
+            <ListItemButton
+              component={Link}
+              to="http://localhost:3000/explore"
+              onClick={handleEploreClick}
+            >
+              <img
+                src={clickedExplore ? "/explore_clicked.png" : "/explore.png"}
+                alt="Explore icon"
+                style={{ marginRight: "10px" }}
+                className="icon-img"
+              />
+              <ListItemText
+                primary={
+                  <Typography
+                    variant="body1"
+                    style={
+                      clickedExplore
+                        ? {
+                            color: "black",
+                            fontWeight: "600",
+                            fontSize: "large",
+                            marginLeft:"5px"
+                          }
+                        : {
+                            color: "black",
+                            fontWeight: "400",
+                            fontSize: "large",
+                            marginLeft:"5px"
+                          }
+                    }
+                  >
+                    Explore
+                  </Typography>
+                }
+              />
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem
+            disablePadding
+            style={{ margin: "10px", width: "180px" }}
+            className="list-item"
+          >
+            <ListItemButton component={Link} to="http://localhost:3000/profile">
+              <img
+                src="/avatar.png"
+                alt="Profile icon"
+                style={{ marginRight: "10px" }}
+                className="icon-img"
+              />
+              <ListItemText
+                primary={
+                  <Typography
+                    variant="body1"
+                    style={{
+                            color: "black",
+                            fontWeight: "400",
+                            fontSize: "large",
+                            marginLeft:"5px"
+                            }
+                            }>
+                    Profile
+                  </Typography>
+                }
+              />
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem
+            disablePadding
+            style={{ margin: "10px", width: "180px" }}
+            className="list-item"
+          >
+            <ListItemButton onClick={handleCreateClick}>
+              <img
+                src="/create.png"
+                alt="Create icon"
+                style={{ marginRight: "10px" }}
+                className="icon-img"
+              />
+              <ListItemText
+                primary={
+                  <Typography
+                    variant="body1"
+                    style={{
+                            color: "black",
+                            fontWeight: "400",
+                            fontSize: "large",
+                            marginLeft:"5px"
+                            }
+                            }>
+                    Create
+                  </Typography>
+                }
+              />
+            </ListItemButton>
+          </ListItem>
         </List>
       </Drawer>
-      
-      <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}>
+
+      {showCreate && (
+        <Create
+          open={showCreate}
+          onClose={handleClose}
+          // selectedPostId={selectedPostId}
+        />
+      )}
+
+      <Box
+        component="main"
+        sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
+      >
         {/* Your main content goes here */}
       </Box>
     </Box>
-    
   );
 }

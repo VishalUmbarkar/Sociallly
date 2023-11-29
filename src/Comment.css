@@ -3,11 +3,12 @@ input{
    border:none;
    height: 20px;
    width: 80%;
+   background: transparent;
 }
 
-button{
+#comment-btn{
     border:none;
-    background-color: white;
+    background: transparent;
     color: #0396f6;
 }
 

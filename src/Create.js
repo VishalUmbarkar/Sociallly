@@ -1,60 +1,12 @@
-// import React, { useState } from 'react';
-
-// const Create=()=>{
-//   const [caption, setCaption] = useState("");
-//   const [selectedFile, setSelectedFile] = useState(null);
-//   const [post, setPost] = useState({});
-
-//   const accessToken = sessionStorage.getItem("accessToken");
-//   const userName = sessionStorage.getItem("userName");
-
-//   const handleSubmit = ()=>{
-
-//     fetch("http://localhost:8080/feed",{
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "multipart/formdata",
-//         "Authorization":`Bearer ${accessToken}`
-//       },
-//       body: JSON.stringify({
-//         userName: userName,
-//         captions: caption,
-//         image: selectedFile.name
-//       }),
-
-//     })
-//     .then((response) => response.json())
-//     .then((data)=>{
-//       setPost(data);
-//       console.log(post);
-//     })
-//     .catch((error) => {
-//             console.error("Error during fetch:", error);
-//           });
-
-
-
-//   }
-
-//   return (
-//     <div>
-//       <div>
-//         <input type='file' value={selectedFile} onChange={(e) => setSelectedFile(e.target.files[0])}/>
-//         <input id ='create' type='text' placeholder='Write a caption...' value={caption} onChange={(e) => setCaption(e.target.value)} />
-        
-//         <button id='btn' onClick={handleSubmit} type='submit'>Post</button>
-        
-//       </div>
-//     </div>
-//   );
-
-//   }
-// export default Create;
-
-
 import React, { useState } from 'react';
+import { Backdrop } from '@mui/material';
+import './Create.css'
 
 const Create = () => {
+  const [open, setOpen] = React.useState(true);
+  const handleClose = () => {
+    setOpen(false);
+  };
   const [caption, setCaption] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [post, setPost] = useState({});
@@ -98,14 +50,50 @@ const blob = new Blob([json], {
   };
 
   return (
-    <div>
-      <div>
-        <input type='file' accept='.png, .jpg, .jpeg' onChange={(e) => setSelectedFile(e.target.files[0])}/>
-        <input id ='create' type='text' placeholder='Write a caption...' value={caption} onChange={(e) => setCaption(e.target.value)} />
-        
-        <button id='btn' onClick={handleSubmit} type='submit'>Post</button>
-      </div>
+      <Backdrop 
+      sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      open={open}
+      onClick={handleClose}
+      >
+
+      <div className='main-container'>
+      <div className='header-container'>
+    <div style={{flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', fontWeight:'400'}}>
+        <p>Create New Post</p>
     </div>
+    <div style={{display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>
+        <button id='post-btn' onClick={handleSubmit} type='submit'>Post</button>
+    </div>
+</div>
+
+      <div className='post-create-inner-container-backdrop' onClick={(e) => e.stopPropagation()}> 
+        <div className='first-half'>
+            <input id="fileInput" type='file' accept='.png, .jpg, .jpeg' onChange={(e) => setSelectedFile(e.target.files[0])} style={{display:"none"}} />
+            
+            <label htmlFor="fileInput" className="custom-file-label">
+        <img src="upload-image.png" alt="Upload" style={{cursor:"pointer"}} />
+        <br />
+        Choose photos
+      </label>
+            
+        </div>
+        <div className='second-half'>
+            <div className='second-half-header'>
+              <p style={{color:"black", fontWeight:"500"}}>{userName}</p>
+              
+            </div>
+            
+            <textarea id ='create' type='text' placeholder='Write a caption...' value={caption} onChange={(e) => setCaption(e.target.value)}
+            onFocus={(e) => (e.target.style.border = 'none')}
+            />
+            
+        </div>
+      </div>
+      </div> 
+    </Backdrop>
+      
+      
+    
   );
 };
 

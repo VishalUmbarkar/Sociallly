@@ -156,7 +156,7 @@ function Feed() {
     <div>
       <div className="posts-container">
         <div className="feed-label">
-          <img src="/feed logo.png" alt="feed" style={{ height: "23px" }}></img>
+          <img src="/feed_logo.png" alt="feed" style={{ height: "23px" }}></img>
         </div>
         {posts.map((post, index) => {
           const isLiked = likedPosts[index];
@@ -176,12 +176,12 @@ function Feed() {
                 </div>
               </div>
               <div className="post-image">
-                <img src={post.image} id="post-img" alt="image"></img>
+                <img src={post.image} id="post-img" alt="image"  ></img>
               </div>
               <div className="footer-btn">
                 <button onClick={() => handleLikeClick(index)}>
                   {isLiked ? (
-                    <img src="/liked.png" alt="liked-btn"></img>
+                    <img src="/liked.png" alt="liked-btn" style={{background: "transparent" }}></img>
                   ) : (
                     <img src="/like.png" alt="like-btn"></img>
                   )}
@@ -196,7 +196,7 @@ function Feed() {
                   <span style={{ fontSize: "15px" }}>{post.noOfComments}</span>
                 </div>
                 <button>
-                  <img src="/share.png" alt="share-btn"></img>
+                  <img src="/share.png" alt="share-btn" style={{background: "transparent" }}></img>
                 </button>
               </div>
               <div className="footer">

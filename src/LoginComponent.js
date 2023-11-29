@@ -56,7 +56,7 @@ const LoginComponent = () => {
       <div className="post-card-login">
         {/* <h2>Socially</h2> */}
         <div className="feed-label-login">
-          <img src="/new logo.png" alt="feed" style={{ height: "50px" }}></img>
+          <img src="/new_logo.png" alt="feed" style={{ height: "50px" }}></img>
         </div>
         <div className="login-textbox">
           <input style={{paddingLeft:"10px"}}
@@ -85,7 +85,7 @@ const LoginComponent = () => {
         <p>
           Don't have an account?{" "}
           <a href="http://localhost:3000/signUp">
-            <span id="span-btn">Sign Up</span>
+            <span id="signup-btn" style={{color:"black"}} >Sign Up</span>
           </a>
         </p>
       </div>

@@ -1,11 +1,11 @@
 /* Add these styles to your existing CSS file or create a new one */
-
 .posts-container {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: left;
     align-items: center;
+    
   }
   
   .post-card {
@@ -19,6 +19,13 @@
     padding: 10px; /* Adjust padding as needed */
     box-sizing: border-box;
     border-radius: 15px;
+    background-color: rgba(231, 229, 234, 0.3);
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+   /* Adjust the blur value as needed */
+   backdrop-filter: blur(20px);
+   @media (max-width: 800px) {
+    margin-left: none;
+  }
   }
   .post-card > .footer-btn {
     width: 101%;
@@ -31,7 +38,7 @@
   
   .post-card > .footer-btn > button {
     border:none;
-    background-color: white;
+    background: transparent;
     margin: 2px;
   }
   
@@ -124,4 +131,7 @@
     height:30px;
     margin-left: -8px;
   }
-  
+
+  img{
+    
+  }

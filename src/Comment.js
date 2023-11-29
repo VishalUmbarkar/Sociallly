@@ -56,7 +56,7 @@ function Comment({ postId }) {
         placeholder="Add a comment..."
       ></input>
       {inputValue.trim() && (
-        <button type="submit" onClick={handleSubmit}>
+        <button id="comment-btn" type="submit" onClick={handleSubmit}>
           Post
         </button>
       )}

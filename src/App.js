@@ -39,7 +39,10 @@ function App() {
               </>
             }
           />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<>
+                <Profile />
+                <Drawer />
+              </>} />
           <Route path="/create" element={<Create />} />
           <Route path="/comment" element={<Comment />} />
           <Route path="backdrop" element={<Backdrop />} />

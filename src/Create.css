@@ -1,4 +1,4 @@
-.main-container{
+.create-container{
     display: flex;
     flex-direction: column;
     /* background-color: #fff; */
@@ -72,5 +72,9 @@ textarea:focus{
     padding-right: 50px;
 }
 
-
+#image-upload-preview{
+    max-height: 450px;
+   height: auto;
+   width: 400px;
+}
   

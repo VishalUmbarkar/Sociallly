@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 function Feed() {
   const navigate = useNavigate();
   const accessToken = sessionStorage.getItem("accessToken");
+  const UserName = sessionStorage.getItem("userName");
   const [posts, setPosts] = useState([]);
   const [likedPosts, setLikedPosts] = useState([]);
   const [comments, setComments] = useState({});
@@ -18,7 +19,7 @@ function Feed() {
   // console.log(accessToken);
 
   useEffect(() => {
-    fetch("http://localhost:8080/feed", {
+    fetch(`http://localhost:8080/feed/${UserName}`, {
       method: 'GET',
       headers: {
         "Content-Type": "application/json",
@@ -28,8 +29,10 @@ function Feed() {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        setPosts(data);
+        setPosts(data.reverse());
         // Initialize likedPosts state with an array for each post
+        //setPosts([...data].reverse());
+        console.log(posts);
         setLikedPosts(Array(data.length).fill(false));
   
         // Fetch comments for each post and update previewComments state
@@ -103,7 +106,7 @@ function Feed() {
           noOfnoOfComments: posts[index].noOfComments,
           likes: decrementedLikes,
           captions: posts[index].captions,
-          image: posts[index].image,
+          image_path: posts[index].image_path,
         }),
       })
         .then((response) => response.json())
@@ -176,7 +179,7 @@ function Feed() {
                 </div>
               </div>
               <div className="post-image">
-                <img src={post.image} id="post-img" alt="image"  ></img>
+                <img src={post.imagePath} id="post-img" alt="image"  ></img>
               </div>
               <div className="footer-btn">
                 <button onClick={() => handleLikeClick(index)}>

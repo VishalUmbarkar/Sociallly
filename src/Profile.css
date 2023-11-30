@@ -1,0 +1,65 @@
+.main-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* justify-content: center; */
+    height: auto;
+    width: 70%;
+    margin:0 0 20px 220px;
+    background-color: rgba(231, 229, 234, 0.5);
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+   /* Adjust the blur value as needed */
+   backdrop-filter: blur(20px);
+}
+
+.upper-half{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    height: 50%;
+    border-bottom: 1px solid black ;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 60px;
+
+}
+
+.lower-half{
+    display: flex;
+    margin-top: 20px;
+    width: auto;
+}
+
+#btn-solid{
+    background-color: rgba(231, 229, 234, 0.1);
+    /* background-image: linear-gradient(to bottom right,rgb(82, 127, 241), rgb(189, 92, 234) , rgb(218, 154, 18)); */
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+   /* Adjust the blur value as needed */
+   backdrop-filter: blur(20px);
+   padding: 8px 15px 10px 15px;
+}
+
+#btn-solid:hover{
+    /* background-color: rgba(162, 162, 162, 0.3); */
+    /* background-image: linear-gradient(to bottom right,rgb(82, 127, 241), rgb(189, 92, 234) , rgb(218, 154, 18)); */
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+   /* Adjust the blur value as needed */
+   backdrop-filter: blur(20px);
+}
+
+.posts-followers-following-count{
+    margin:15px;
+    /* font-weight: 500; */
+}
+
+.bio{
+    margin:15px;
+}
+
+.firstname-lastname{
+    margin:15px;
+    font-weight: 500;
+}

@@ -46,10 +46,10 @@ export default function SimpleBackdrop({
           return (
             <div key={post.postId} className="post-container-backdrop">
               <div className="left-half">
-                <img
+                <img id="image-post"
                   src={post.image}
                   alt="post"
-                  style={{ height: "100%", width: "100%" }}
+                  // style={{ height: "100%", width: "100%" }}
                 />
               </div>
 

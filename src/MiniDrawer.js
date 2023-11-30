@@ -19,27 +19,39 @@ export default function MiniDrawer() {
   const [showCreate, setShowCreate] = useState(false);
   const [clickedHome, setClickedHome] = useState(true);
   const [clickedExplore, setClickedExplore] = useState(false);
+  const [clickedSearch, setClickedSearch] = useState(false);
 
   const handleHomeClick = () => {
     setClickedExplore(false);
     setClickedHome(true);
+    setClickedSearch(false);
   };
 
   const handleEploreClick = () => {
     setClickedHome(false);
     setClickedExplore(true);
+    setClickedSearch(false);
   };
 
   const handleCreateClick = () => {
     setShowCreate(true);
+    setClickedExplore(false);
+    setClickedHome(false);
+    setClickedSearch(false);
   };
+
+  const handleSearchClick=()=>{
+    setClickedSearch(true);
+    setClickedHome(false);
+    setClickedExplore(false);
+  }
 
   const handleClose = () => {
     setShowCreate(false);
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex" , background:"transparent"}}>
       <Drawer
         className="drawer"
         sx={{
@@ -225,6 +237,46 @@ export default function MiniDrawer() {
               />
             </ListItemButton>
           </ListItem>
+          <ListItem
+            disablePadding
+            style={{ margin: "10px", width: "180px" }}
+            className="list-item"
+          >
+            <ListItemButton onClick={handleSearchClick}
+
+            >
+              <img
+                src={clickedSearch ? "/search_clicked.png" : "/search.png"}
+                alt="Search icon"
+                style={{ marginRight: "10px" }}
+                className="icon-img"
+              />
+              <ListItemText
+                primary={
+                  <Typography
+                    variant="body1"
+                    style={
+                      clickedSearch
+                        ? {
+                            color: "black",
+                            fontWeight: "600",
+                            fontSize: "large",
+                            marginLeft:"5px"
+                          }
+                        : {
+                            color: "black",
+                            fontWeight: "400",
+                            fontSize: "large",
+                            marginLeft:"5px"
+                          }
+                    }
+                  >
+                    Search
+                  </Typography>
+                }
+              />
+            </ListItemButton>
+          </ListItem>
         </List>
       </Drawer>
 
@@ -238,7 +290,7 @@ export default function MiniDrawer() {
 
       <Box
         component="main"
-        sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
+        sx={{ flexGrow: 1, background:"none", p: 3 }}
       >
         {/* Your main content goes here */}
       </Box>

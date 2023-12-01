@@ -12,6 +12,7 @@ import Create from "./Create";
 import Comment from "./Comment";
 import Backdrop from "./Backdrop";
 import SignUp from "./SignUp";
+import Search from "./Search";
 
 function App() {
   return (
@@ -45,7 +46,8 @@ function App() {
               </>} />
           <Route path="/create" element={<Create />} />
           <Route path="/comment" element={<Comment />} />
-          <Route path="backdrop" element={<Backdrop />} />
+          <Route path="/backdrop" element={<Backdrop />} />
+          <Route path="/search" element={<Search />}></Route>
         </Routes>
       </Router>
       {/* <Navbar /> */}

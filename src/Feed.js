@@ -106,7 +106,7 @@ function Feed() {
           noOfnoOfComments: posts[index].noOfComments,
           likes: decrementedLikes,
           captions: posts[index].captions,
-          image_path: posts[index].image_path,
+          imagePath: posts[index].imagePath,
         }),
       })
         .then((response) => response.json())

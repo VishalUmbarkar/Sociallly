@@ -6,12 +6,12 @@ import './Explore.css'; // Import your CSS file
 export default function StandardImageList() {
   return (
     <div className='explore-container'>
-      <ImageList className='imagelist'sx={{ width: '50%', height: '100%' }} cols={3} rowHeight={300}>
+      <ImageList className='imagelist'sx={{ width: '60%', height: '100%' }} cols={3} rowHeight={300}>
         {itemData.map((item) => (
           <ImageListItem key={item.img}>
             <img
-              srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-              src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
+              srcSet={`${item.img}`}
+              src={`${item.img}`}
               alt={item.title}
               loading="lazy"
             />

@@ -1,0 +1,94 @@
+.edit-container{
+    display: flex;
+    flex-direction: column;
+    /* background-color: #fff; */
+    color: black;
+    border-radius: 8px;
+    background-color: rgba(231, 229, 234, 0.5);
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+   /* Adjust the blur value as needed */
+   backdrop-filter: blur(20px);
+   height: 500px;
+   width:500px;
+}
+
+.edit-header-container{
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    /* background-color: #fff; */
+    color: black;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    justify-content: space-between;
+    justify-content: center;
+    height: 50px;
+}
+
+.edit-container-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-left: 40px;
+}
+
+#inp::placeholder{
+    color: black;
+    padding: 10px; 
+    margin: 10px;
+    text-wrap: wrap;
+}
+
+#inp::-webkit-scrollbar{
+    display: none;
+}
+
+#inp{
+    outline: none;
+    width: auto;
+    border:  transparent;
+    resize: none;
+    transition: border-bottom 0.8s;
+    background-color: rgba(231, 229, 234, 0.1);
+    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+    /* Adjust the blur value as needed */
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+    height: 30px;
+    margin: 10px;
+}
+
+#inp:focus{
+    border-bottom: 1px solid rgb(49, 47, 47) ;
+  
+  }
+
+  .edit-btn{
+    position: absolute;
+    right:10px;
+     font-size: 15px;
+    width: fit-content;
+    
+    /*
+    border:none;
+    
+    background: transparent;
+    color: #033658;
+    padding-right: 50px; */
+
+    background-color: rgba(231, 229, 234, 0.1);
+    /* background-image: linear-gradient(to bottom right,rgb(82, 127, 241), rgb(189, 92, 234) , rgb(218, 154, 18)); */
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+   /* Adjust the blur value as needed */
+   backdrop-filter: blur(20px);
+   padding: 8px 15px 10px 15px;
+   border: transparent;
+   border-radius: 20px;
+   background: transparent;
+    
+  }
+
+
+

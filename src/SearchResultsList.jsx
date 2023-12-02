@@ -5,7 +5,7 @@ import  SearchResult  from "./SearchResult";
   return (
     <div className="results-list" >
       {results.map((result, id) => {
-        return <SearchResult result={result.firstName+' '+result.lastName} key={id} />;
+        return <SearchResult result={result.userName} key={id} />;
       })}
     </div>
   );

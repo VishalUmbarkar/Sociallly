@@ -4,14 +4,18 @@ import Explore from "./Explore";
 import { Button } from "@mui/material";
 import UserPosts from "./UserPosts";
 import EditProfile from "./EditProfile";
+import { useLocation } from "react-router-dom";
 
 function Profile() {
   const accessToken = sessionStorage.getItem("accessToken");
-  const userName = sessionStorage.getItem("userName");
   const [userPosts, setUserPosts]=useState({});
   const [userInfo, setUserInfo] = useState({});
   const [openEditBackdrop, setOpenEditBackdrop] = useState(false);
+  const location = useLocation();
+  const yourProps = location.state?.yourProps || {};
+  const userName = yourProps.userName;
 
+  console.log(userName)
 
 const onClose=()=>{
     setOpenEditBackdrop(false);
@@ -51,7 +55,7 @@ const onClose=()=>{
       console.log(posts);
     })
 
-  },[])
+  },[userName])
 
   var followerCount;
   var followingCount;

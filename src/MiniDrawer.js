@@ -8,7 +8,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import "./Drawer.css";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Create from "./Create";
 import { Typography } from "@mui/material";
 import Search from "./Search";
@@ -22,6 +22,8 @@ export default function MiniDrawer() {
   const [clickedExplore, setClickedExplore] = useState(false);
   const [clickedSearch, setClickedSearch] = useState(false);
   const [toggleSearch,setToggleSearch]= useState(false);
+  const navigate = useNavigate();
+  const userName=sessionStorage.getItem("userName");
 
   const handleHomeClick = () => {
     setClickedExplore(false);
@@ -41,6 +43,10 @@ export default function MiniDrawer() {
     setClickedHome(false);
     setClickedSearch(false);
   };
+
+  const handleProfileClick=()=>{
+    navigate('/profile', { state: { yourProps: { userName } } });
+  }
 
   const handleSearchClick=()=>{
     setClickedSearch(true);
@@ -190,7 +196,7 @@ export default function MiniDrawer() {
             style={{ margin: "10px", width: "180px" }}
             className="list-item"
           >
-            <ListItemButton component={Link} to="http://localhost:3000/profile">
+            <ListItemButton onClick={handleProfileClick}>
               <img
                 src="/avatar.png"
                 alt="Profile icon"

@@ -11,6 +11,7 @@ import "./Drawer.css";
 import { Link } from "react-router-dom";
 import Create from "./Create";
 import { Typography } from "@mui/material";
+import Search from "./Search";
 
 const drawerWidth = 220;
 
@@ -20,6 +21,7 @@ export default function MiniDrawer() {
   const [clickedHome, setClickedHome] = useState(true);
   const [clickedExplore, setClickedExplore] = useState(false);
   const [clickedSearch, setClickedSearch] = useState(false);
+  const [toggleSearch,setToggleSearch]= useState(false);
 
   const handleHomeClick = () => {
     setClickedExplore(false);
@@ -44,11 +46,16 @@ export default function MiniDrawer() {
     setClickedSearch(true);
     setClickedHome(false);
     setClickedExplore(false);
+    setToggleSearch(true);
   }
 
   const handleClose = () => {
     setShowCreate(false);
   };
+
+  const handleCloseSearch=()=>{
+    setToggleSearch(false);
+  }
 
   return (
     <Box sx={{ display: "flex" , background:"transparent"}}>
@@ -279,6 +286,8 @@ export default function MiniDrawer() {
           </ListItem>
         </List>
       </Drawer>
+
+      {toggleSearch && <Search toggle={true} onClose={handleCloseSearch} />}
 
       {showCreate && (
         <Create

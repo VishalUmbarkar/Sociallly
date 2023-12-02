@@ -1,67 +1,66 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
-import './SearchBar.css';
+
+// import './Search.css';
 import  SearchBar  from './SearchBar';
 import  SearchResultsList  from './SearchResultsList';
 
- const Search=()=> {
-  const [state, setState] = React.useState({
-    
-    left: false,
-
-});
+ const Search=( {toggle, onClose })=> {
+  
 const [results, setResults] = React.useState([]);
+const [open, setOpen] = React.useState(true);
 
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
+const handleClickAway = (event) => {
+    const drawer = document.getElementById('search-drawer');
+    if (drawer && !drawer.contains(event.target)) {
+      onClose();
     }
-
-    setState({ ...state, [anchor]: open });
   };
 
-  const list = (anchor) => (
-    <Box
-      sx={{ 
-        width: anchor === 'left' || anchor === 'bottom' ? '250' : 350, backgroundColor:"white" // Apply a common left margin for all anchors
-      }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      
-      <Divider />
-      
-    </Box>
-  );
+  React.useEffect(() => {
+    if (open) {
+      document.addEventListener('mousedown', handleClickAway);
+    } else {
+      document.removeEventListener('mousedown', handleClickAway);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickAway);
+    };
+  }, [open, onClose]);
+
+  const customClasses = {
+    paper: 'my-custom-drawer', // Add your custom class here
+  };
+    
+
 
   return (
-    <div>
-      <React.Fragment key={'left'}>
-        <Button onClick={toggleDrawer('left', true)}>left</Button>
+    <div id='kare'>
+      <React.Fragment>
+        
         <Drawer
-          anchor={'left'}
-          open={state['left']}
-          onClose={toggleDrawer('left', false)}
-          sx={{
-            '& .MuiDrawer-paper': {
-              boxSizing: 'border-box',
-              width: "450px",
-              marginLeft:"65px" // Apply a common left margin
-            },
+        id='search-drawer'
+          
+        classes={customClasses}
+          open={open}
+          onClose={onClose}
+          hideBackdrop={true}
+          PaperProps={{
+            style: { display: 'flex', marginLeft:"64px", alignItems:"center", width:"350px", backgroundColor: "rgba(231, 229, 234, 0.001)",zIndex :"1",backdropFilter:" blur(40px)"},
           }}
+          
+          sx={{
+              width: "250px",
+              marginLeft:"64px"          }}
         >
          
-         <div className="App">
-      <div className="search-bar-container">
+         
         <SearchBar setResults={setResults} />
         {results && results.length > 0 && <SearchResultsList results={results} />}
-      </div>
-    </div>
-
+     
         </Drawer>
       </React.Fragment>
     </div>

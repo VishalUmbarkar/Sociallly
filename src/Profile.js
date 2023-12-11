@@ -15,8 +15,8 @@ function Profile() {
   const yourProps = location.state?.yourProps || {};
   const userName = yourProps.userName;
   const loggedInUserName= sessionStorage.getItem("userName");
-
-  console.log(userName);
+  const [followers,setFollowers]= useState(['vishal_umbarkar']);
+  //console.log(userName);
 
   const onClose = () => {
     setOpenEditBackdrop(false);
@@ -36,7 +36,7 @@ function Profile() {
     })
     .then((response)=>response.json())
     .then((data)=>{
-      console.log(data);
+      // console.log(data);
     })
   }
 
@@ -51,7 +51,9 @@ function Profile() {
       .then((response) => response.json())
       .then((data) => {
         setUserInfo(data);
-        console.log(data);
+        setFollowers(data.followers);
+        //console.log(data);
+        console.log(followers)
       });
 
     fetch(`http://localhost:8080/getPost/${userName}`, {
@@ -64,7 +66,7 @@ function Profile() {
       .then((response) => response.json())
       .then((posts) => {
         setUserPosts(posts.reverse());
-        console.log(posts);
+        
       });
   }, [userName]);
 
@@ -107,7 +109,7 @@ function Profile() {
                 @{userInfo.userName}
               </div>
               {(userName===loggedInUserName)?
-              
+              [
               <div className="edit-profile-btn" style={{ marginLeft: "10px" }}>
               {/* <button id="btn-solid" style={{borderRadius:"3px"}}>Edit Profile</button> */}
               <button
@@ -132,8 +134,62 @@ function Profile() {
                 </span>
               </button>
             </div>
-            :
+              ,
+              
+            <div className="edit-profile-btn" style={{ marginLeft: "10px" }} >
+              {/* <button id="btn-solid" style={{borderRadius:"3px"}}>Edit Profile</button> */}
+              <a href="http://localhost:3000/login">
+              <button
+                id="btn-solid"
+                style={{
+                  height: "32px",
+                  width: "100%",
+                  color: "black",
+                  borderRadius: "15px",
+                  border: "none",
+                }}
+              >
+                
+                <span
+                  style={{
+                    fontWeight: "550",
+                    objectFit: "contain",
+                    background: "transparent",
+                  }}
+                  onClick={handleLogout}
+                >
+                  Log out
+                </span>
+              </button>
+              
+              </a>
+            </div>]
+            
+            :(followers.length > 0 &&followers.includes(loggedInUserName))?
             <div className="edit-profile-btn" style={{ marginLeft: "10px" }}>
+                {/* <button id="btn-solid" style={{borderRadius:"3px"}}>Edit Profile</button> */}
+                <button
+                  id="btn-solid"
+                  style={{
+                    height: "32px",
+                    width: "100%",
+                    color: "black",
+                    borderRadius: "15px",
+                    border: "none",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontWeight: "550",
+                      objectFit: "contain",
+                      background: "transparent",
+                    }}
+                    onClick={handleFollowButtonClick}
+                  >
+                    Following
+                  </span>
+                </button>
+              </div>:<div className="edit-profile-btn" style={{ marginLeft: "10px" }}>
                 {/* <button id="btn-solid" style={{borderRadius:"3px"}}>Edit Profile</button> */}
                 <button
                   id="btn-solid"

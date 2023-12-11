@@ -15,6 +15,7 @@ function Feed() {
   const [openBackdrop, setOpenBackdrop] = useState(false);
   const [selectedPostId, setSelectedPostId] = useState(null);
   const [previewComments, setPreviewComments] = useState([]);
+  
 
   // console.log(accessToken);
 
@@ -87,7 +88,6 @@ function Feed() {
     const newLikedPosts = [...likedPosts];
     newLikedPosts[index] = !newLikedPosts[index];
     setLikedPosts(newLikedPosts);
-
     const isLikedPost = newLikedPosts[index];
     const postid = posts[index].postId;
     const incrementedLikes = posts[index].likes + 1;
@@ -155,6 +155,10 @@ function Feed() {
     setSelectedPostId(null);
   };
 
+  const handleProfileClick=(userName)=>{
+    navigate('/profile', { state: { yourProps: { userName } } });
+  }
+
   return (
     <div>
       <div className="posts-container" style={{marginTop:"70px"}}>
@@ -174,7 +178,7 @@ function Feed() {
                     alt="profile pic"
                   ></img>
                 </div>
-                <div className="post-username">
+                <div className="post-username" style={{cursor:"pointer"}} onClick={(e) => handleProfileClick(post.userName)}>
                   <p>{post.userName}</p>
                 </div>
               </div>
@@ -210,7 +214,7 @@ function Feed() {
 
 
               <div className="footer">
-                <div className="footer-post-username">
+                <div className="post-ftr-username">
                   <p>{post.userName}</p>
                 </div>
                 <p className="post-caption">{post.captions}</p>

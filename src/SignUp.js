@@ -38,7 +38,7 @@ function SignUp() {
              setUser(data); //storing the response from post request
             // console.log(data.token);
             console.log(user);
-    
+            sessionStorage.setItem("userName", user.userName);
             sessionStorage.setItem("accessToken", user.token);
             if(!user.token){
               //return redirect('/login');

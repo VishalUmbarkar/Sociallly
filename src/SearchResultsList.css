@@ -10,3 +10,7 @@
     overflow-y: auto;
     margin-left: 3rem;
   }
+
+  .results-list:hover{
+    cursor: pointer;
+  }

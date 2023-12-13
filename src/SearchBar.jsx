@@ -19,7 +19,7 @@ import "./SearchBar.css";
             value &&
             user &&
             user.userName &&
-            user.userName.toLowerCase().includes(value)
+           ( user.userName.toLowerCase().includes(value) || user.firstName.toLowerCase().includes(value) || user.lastName.toLowerCase().includes(value) )
             
           );
         });
@@ -37,7 +37,7 @@ import "./SearchBar.css";
   return (
     <div className="input-wrapper">
       
-      <input
+      <input id="input"
         placeholder="Type to search..."
         value={input}
         onChange={(e) => handleChange(e.target.value)}

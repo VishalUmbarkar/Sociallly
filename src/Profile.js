@@ -11,6 +11,9 @@ function Profile() {
   const [userPosts, setUserPosts] = useState({});
   const [userInfo, setUserInfo] = useState({});
   const [openEditBackdrop, setOpenEditBackdrop] = useState(false);
+  const [followButtonVisible,setFollowButtonVisible] = useState();
+  const [unfollowButtonVisible,setUnFollowButtonVisible] = useState();
+
   const location = useLocation();
   const yourProps = location.state?.yourProps || {};
   const userName = yourProps.userName;
@@ -36,7 +39,25 @@ function Profile() {
     })
     .then((response)=>response.json())
     .then((data)=>{
+      console.log(data);
+      setUnFollowButtonVisible(true);
+      setFollowButtonVisible(false);
+    })
+  }
+
+  const handleUnFollowButtonClick = ()=>{
+    fetch(`http://localhost:8080/updateUser/${loggedInUserName}/unfollow/${userName}`,{
+      method:"PUT",
+      headers:{
+        "Content-Type":"application/json",
+        Authorization:`Bearer ${accessToken}`
+      }
+    })
+    .then((response)=>response.json())
+    .then((data)=>{
       // console.log(data);
+      setFollowButtonVisible(true);
+      setUnFollowButtonVisible(false);
     })
   }
 
@@ -68,7 +89,7 @@ function Profile() {
         setUserPosts(posts.reverse());
         
       });
-  }, [userName]);
+  }, [userName, followButtonVisible, unfollowButtonVisible]);
 
   var followerCount;
   var followingCount;
@@ -184,7 +205,7 @@ function Profile() {
                       objectFit: "contain",
                       background: "transparent",
                     }}
-                    onClick={handleFollowButtonClick}
+                    onClick={handleUnFollowButtonClick}
                   >
                     Following
                   </span>

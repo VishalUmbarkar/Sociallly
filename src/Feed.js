@@ -78,6 +78,7 @@ function Feed() {
           ...prevComments,
           [postId]: data, // Store comments for the specific post
         }));
+        console.log('comments:',data)
       })
       .catch((err) => {
         console.log(err.message);
@@ -217,7 +218,9 @@ function Feed() {
                 <div className="post-ftr-username">
                   <p>{post.userName}</p>
                 </div>
-                <p className="post-caption">{post.captions}</p>
+                <div className="post-caption">
+                <p >{post.captions}</p>
+                </div>
               </div>
 
               {previewComments[post.postId] &&
@@ -227,11 +230,14 @@ function Feed() {
                     <p className="comment">{comment.comment}</p>
                   </div>
                 ))}
+              
               <div
                 className="comment-btn"
                 onClick={() => handleCommentClick(post.postId)}
               >
-                View all {post.noOfComments} comments...
+                {(post.noOfComments>0) ?
+                <p>View all {post.noOfComments} comments...</p>:<p></p>
+        }
               </div>
               <div className="comment-box">
                 <Comment  postId={post.postId}/>

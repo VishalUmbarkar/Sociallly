@@ -12,7 +12,7 @@
     width: 80%;
   }
   
-  input {
+  #input {
     background-color: transparent;
     border: none;
     height: 100%;
@@ -21,7 +21,7 @@
     margin-left: 5px;
   }
   
-  input:focus {
+  #input:focus {
     outline: none;
   }
   
